@@ -23,8 +23,7 @@ public class Job1Config {
 
     @Bean
     public Job testJob1() {
-        return new JobBuilder("testJob1", jobRepository)
-                .incrementer(new RunIdIncrementer())
+        return new JobBuilder("testJob", jobRepository)
                 .start(testStep1())
                 .preventRestart()
                 .build();
@@ -33,7 +32,7 @@ public class Job1Config {
 
     @Bean
     public Step testStep1() {
-        return new StepBuilder("testStep1", jobRepository)
+        return new StepBuilder("testStep", jobRepository)
                 .tasklet(testTasklet1(), transactionManager).build();
     }
 
